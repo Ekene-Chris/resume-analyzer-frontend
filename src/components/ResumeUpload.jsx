@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  FaCloudUploadAlt,
+  FaSpinner,
+  FaExclamationCircle,
+} from "react-icons/fa";
 import { cvService } from "../services/apiService";
 
 const ResumeUpload = () => {
@@ -11,6 +16,7 @@ const ResumeUpload = () => {
   const [experienceLevel, setExperienceLevel] = useState("mid");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [fileName, setFileName] = useState("");
 
   const roles = [
     { id: "devops_engineer", name: "DevOps Engineer" },
@@ -27,19 +33,32 @@ const ResumeUpload = () => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-    setFile(selectedFile);
+    if (selectedFile) {
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    if (!name || !email || !file) {
-      setError("Please fill in all required fields");
+    if (!name) {
+      setError("Please enter your name");
+      return;
+    }
+
+    if (!email) {
+      setError("Please enter your email address");
+      return;
+    }
+
+    if (!file) {
+      setError("Please upload your resume");
       return;
     }
 
     setIsLoading(true);
-    setError("");
 
     try {
       // Create form data
@@ -62,103 +81,169 @@ const ResumeUpload = () => {
   };
 
   return (
-    <div className="card">
-      <h2 className="text-2xl font-bold text-center mb-6">
-        AI Resume Analyzer
-      </h2>
+    <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+      <div className="bg-caput-mortuum text-white p-6">
+        <h2 className="text-2xl font-bold flex items-center">
+          <FaCloudUploadAlt className="mr-2" /> Upload Your Resume
+        </h2>
+        <p className="mt-2 text-gold">
+          Get AI-powered feedback based on industry standards
+        </p>
+      </div>
 
-      {error && <div className="form-error">{error}</div>}
+      <div className="p-6">
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-start">
+            <FaExclamationCircle className="mt-1 mr-2 flex-shrink-0" />
+            <p>{error}</p>
+          </div>
+        )}
 
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="form-label">
-            Full Name *
-          </label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="form-input"
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Full Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition"
+                required
+              />
+            </div>
 
-        <div className="mb-4">
-          <label htmlFor="email" className="form-label">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-input"
-            required
-          />
-        </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Email Address <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition"
+                required
+              />
+            </div>
+          </div>
 
-        <div className="mb-4">
-          <label htmlFor="targetRole" className="form-label">
-            Target Role
-          </label>
-          <select
-            id="targetRole"
-            value={targetRole}
-            onChange={(e) => setTargetRole(e.target.value)}
-            className="form-select"
-          >
-            {roles.map((role) => (
-              <option key={role.id} value={role.id}>
-                {role.name}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label
+                htmlFor="targetRole"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Target Role
+              </label>
+              <select
+                id="targetRole"
+                value={targetRole}
+                onChange={(e) => setTargetRole(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition appearance-none bg-white"
+              >
+                {roles.map((role) => (
+                  <option key={role.id} value={role.id}>
+                    {role.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-        <div className="mb-4">
-          <label htmlFor="experienceLevel" className="form-label">
-            Experience Level
-          </label>
-          <select
-            id="experienceLevel"
-            value={experienceLevel}
-            onChange={(e) => setExperienceLevel(e.target.value)}
-            className="form-select"
-          >
-            {experienceLevels.map((level) => (
-              <option key={level.id} value={level.id}>
-                {level.name}
-              </option>
-            ))}
-          </select>
-        </div>
+            <div>
+              <label
+                htmlFor="experienceLevel"
+                className="block text-gray-700 font-medium mb-2"
+              >
+                Experience Level
+              </label>
+              <select
+                id="experienceLevel"
+                value={experienceLevel}
+                onChange={(e) => setExperienceLevel(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition appearance-none bg-white"
+              >
+                {experienceLevels.map((level) => (
+                  <option key={level.id} value={level.id}>
+                    {level.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
 
-        <div className="mb-6">
-          <label htmlFor="resume" className="form-label">
-            Upload Resume (PDF, DOCX) *
-          </label>
-          <input
-            type="file"
-            id="resume"
-            onChange={handleFileChange}
-            className="form-input"
-            accept=".pdf,.docx,.doc"
-            required
-          />
-          <p className="mt-1 text-xs text-gray-500">Max file size: 10MB</p>
-        </div>
+          <div className="mb-8">
+            <label className="block text-gray-700 font-medium mb-2">
+              Upload Resume <span className="text-red-500">*</span>
+            </label>
 
-        <button
-          type="submit"
-          disabled={isLoading}
-          className={`w-full btn ${
-            isLoading ? "bg-gray-400 cursor-not-allowed" : "btn-primary"
-          }`}
-        >
-          {isLoading ? "Uploading..." : "Analyze Resume"}
-        </button>
-      </form>
+            <div className="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-caput-mortuum transition cursor-pointer bg-gray-50">
+              <input
+                type="file"
+                id="resume"
+                onChange={handleFileChange}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                accept=".pdf,.docx,.doc"
+                required
+              />
+
+              <div className="space-y-2">
+                <div className="text-caput-mortuum text-4xl flex justify-center">
+                  <FaCloudUploadAlt />
+                </div>
+
+                {fileName ? (
+                  <div>
+                    <p className="text-sm text-gray-500">Selected file:</p>
+                    <p className="font-medium text-caput-mortuum">{fileName}</p>
+                  </div>
+                ) : (
+                  <>
+                    <p className="font-medium">
+                      Drag your resume here or click to browse
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Supports PDF, DOCX (Max 10MB)
+                    </p>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-500">
+              Your data is securely processed and never shared.
+            </p>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`px-6 py-3 rounded-lg font-medium flex items-center ${
+                isLoading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-caput-mortuum hover:bg-caput-mortuum-700 text-white"
+              } transition shadow-md`}
+            >
+              {isLoading ? (
+                <>
+                  <FaSpinner className="animate-spin mr-2" /> Processing...
+                </>
+              ) : (
+                "Analyze Resume"
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
