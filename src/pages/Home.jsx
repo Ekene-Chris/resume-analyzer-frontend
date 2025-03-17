@@ -8,7 +8,7 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import ResumeUpload from "../components/ResumeUpload";
-// Import your logo - update with correct path
+// Import your logo
 import logo from "../assets/images/logo.svg";
 
 const Home = () => {
@@ -28,12 +28,14 @@ const Home = () => {
               engineers, and discover what it takes to stand out in today's
               competitive tech marketplace.
             </p>
-            <button
-              onClick={() => setShowUploadForm(true)}
-              className="bg-gold hover:bg-gold-600 text-black font-bold py-3 px-8 rounded-lg transition shadow-lg transform hover:scale-105"
-            >
-              Analyze Your Resume Now
-            </button>
+            <div className="flex justify-center md:justify-start">
+              <button
+                onClick={() => setShowUploadForm(true)}
+                className="bg-gold hover:bg-gold-600 text-black font-bold py-4 px-10 rounded-lg transition shadow-lg transform hover:scale-105 text-lg"
+              >
+                Analyze Your Resume Now
+              </button>
+            </div>
           </div>
           <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
             <div className="relative w-full max-w-md">
@@ -244,7 +246,7 @@ const Home = () => {
               <div className="mt-12 text-center">
                 <button
                   onClick={() => setShowUploadForm(true)}
-                  className="bg-deep-black-800 hover:bg-deep-black-700 text-white font-bold py-3 px-8 rounded-lg transition shadow-lg"
+                  className="bg-deep-black-800 hover:bg-deep-black-700 text-white font-bold py-4 px-10 rounded-lg transition shadow-lg text-lg"
                 >
                   Analyze Your Resume
                 </button>
@@ -264,7 +266,7 @@ const Home = () => {
               </p>
               <button
                 onClick={() => setShowUploadForm(true)}
-                className="bg-gold hover:bg-gold-600 text-black font-bold py-3 px-8 rounded-lg transition shadow-lg transform hover:scale-105"
+                className="bg-gold hover:bg-gold-600 text-black font-bold py-4 px-10 rounded-lg transition shadow-lg transform hover:scale-105 text-lg"
               >
                 Analyze Your Resume Now
               </button>
@@ -299,12 +301,12 @@ const Home = () => {
                 resilient, scalable tech solutions that drive efficiency and
                 transformation.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex justify-center md:justify-start space-x-6">
                 <a
                   href="https://ekenechris.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-deep-black-800 hover:bg-deep-black-700 text-white px-4 py-2 rounded-lg"
+                  className="bg-deep-black-800 hover:bg-deep-black-700 text-white px-6 py-3 rounded-lg font-medium text-center"
                 >
                   Visit Website
                 </a>
@@ -312,7 +314,7 @@ const Home = () => {
                   href="https://jointeleios.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-caput-mortuum hover:bg-caput-mortuum-700 text-white px-4 py-2 rounded-lg"
+                  className="bg-caput-mortuum hover:bg-caput-mortuum-700 text-white px-6 py-3 rounded-lg font-medium text-center"
                 >
                   Learn About Teleios
                 </a>

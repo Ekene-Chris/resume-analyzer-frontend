@@ -8,12 +8,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-deep-black-800 text-white shadow-md relative z-10">
+    <header className="bg-white text-deep-black-800 shadow-sm relative z-10">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center">
             {/* Logo */}
-            <img src={logo} alt="Ekene Chris Logo" className="h-10 mr-3" />
+            <img src={logo} alt="Ekene Chris Logo" className="h-12 mr-3" />
             <div>
               <span className="text-xl font-bold">AI Resume Analyzer</span>
               <span className="block text-xs md:text-sm text-gold">
@@ -26,7 +26,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white focus:outline-none"
+              className="text-deep-black-800 focus:outline-none"
             >
               {isMenuOpen ? (
                 <FaTimes className="h-6 w-6" />
@@ -81,7 +81,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-deep-black-700 py-4 px-4 absolute w-full shadow-lg">
+        <nav className="md:hidden bg-white py-4 px-4 absolute w-full shadow-lg">
           <div className="flex flex-col space-y-4">
             <Link
               to="/"

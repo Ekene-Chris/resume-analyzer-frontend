@@ -185,7 +185,7 @@ const ResumeUpload = () => {
               Upload Resume <span className="text-red-500">*</span>
             </label>
 
-            <div className="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-deep-black-700 transition cursor-pointer bg-gray-50">
+            <div className="relative border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-deep-black-700 transition cursor-pointer bg-gray-50">
               <input
                 type="file"
                 id="resume"
@@ -195,8 +195,8 @@ const ResumeUpload = () => {
                 required
               />
 
-              <div className="space-y-2">
-                <div className="text-caput-mortuum text-4xl flex justify-center">
+              <div className="space-y-3">
+                <div className="text-caput-mortuum text-5xl flex justify-center">
                   <FaCloudUploadAlt />
                 </div>
 
@@ -209,7 +209,7 @@ const ResumeUpload = () => {
                   </div>
                 ) : (
                   <>
-                    <p className="font-medium">
+                    <p className="font-medium text-lg">
                       Drag your resume here or click to browse
                     </p>
                     <p className="text-xs text-gray-500">
@@ -221,7 +221,7 @@ const ResumeUpload = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col items-center space-y-4">
             <p className="text-sm text-gray-500">
               Your data is securely processed and never shared.
             </p>
@@ -229,7 +229,7 @@ const ResumeUpload = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className={`px-6 py-3 rounded-lg font-medium flex items-center ${
+              className={`px-8 py-4 rounded-lg font-medium text-lg flex items-center ${
                 isLoading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-deep-black-800 hover:bg-deep-black-700 text-white"
