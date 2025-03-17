@@ -5,7 +5,19 @@ export default {
     extend: {
       colors: {
         linen: "#FFF4E9",
-        "deep-black": "#070402",
+        "deep-black": {
+          DEFAULT: "#070402",
+          50: "#f9f9f9",
+          100: "#f0f0f0",
+          200: "#e4e4e4",
+          300: "#d1d1d1",
+          400: "#b4b4b4",
+          500: "#919191",
+          600: "#6d6d6d",
+          700: "#4a4a4a",
+          800: "#222222",
+          900: "#070402",
+        },
         "caput-mortuum": {
           DEFAULT: "#592429",
           50: "#f9e6e7",
@@ -34,8 +46,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Nunito", "Helvetica", "Arial", "sans-serif"],
-        display: ["Nunito", "Helvetica", "Arial", "sans-serif"],
+        sans: ["Avenir", "Helvetica", "Arial", "sans-serif"],
+        display: ["Avenir Bold", "Helvetica", "Arial", "sans-serif"],
       },
     },
   },

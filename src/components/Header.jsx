@@ -8,7 +8,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-caput-mortuum text-white shadow-md relative z-10">
+    <header className="bg-deep-black-800 text-white shadow-md relative z-10">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center">
@@ -81,7 +81,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-caput-mortuum-800 py-4 px-4 absolute w-full shadow-lg">
+        <nav className="md:hidden bg-deep-black-700 py-4 px-4 absolute w-full shadow-lg">
           <div className="flex flex-col space-y-4">
             <Link
               to="/"

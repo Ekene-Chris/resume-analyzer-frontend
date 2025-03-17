@@ -82,7 +82,7 @@ const ResumeUpload = () => {
 
   return (
     <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
-      <div className="bg-caput-mortuum text-white p-6">
+      <div className="bg-deep-black-800 text-white p-6">
         <h2 className="text-2xl font-bold flex items-center">
           <FaCloudUploadAlt className="mr-2" /> Upload Your Resume
         </h2>
@@ -113,7 +113,7 @@ const ResumeUpload = () => {
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-gray-300 focus:border-deep-black-700 transition"
                 required
               />
             </div>
@@ -130,7 +130,7 @@ const ResumeUpload = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-gray-300 focus:border-deep-black-700 transition"
                 required
               />
             </div>
@@ -148,7 +148,7 @@ const ResumeUpload = () => {
                 id="targetRole"
                 value={targetRole}
                 onChange={(e) => setTargetRole(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition appearance-none bg-white"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-gray-300 focus:border-deep-black-700 transition appearance-none bg-white"
               >
                 {roles.map((role) => (
                   <option key={role.id} value={role.id}>
@@ -169,7 +169,7 @@ const ResumeUpload = () => {
                 id="experienceLevel"
                 value={experienceLevel}
                 onChange={(e) => setExperienceLevel(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-caput-mortuum-100 focus:border-caput-mortuum transition appearance-none bg-white"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-gray-300 focus:border-deep-black-700 transition appearance-none bg-white"
               >
                 {experienceLevels.map((level) => (
                   <option key={level.id} value={level.id}>
@@ -185,7 +185,7 @@ const ResumeUpload = () => {
               Upload Resume <span className="text-red-500">*</span>
             </label>
 
-            <div className="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-caput-mortuum transition cursor-pointer bg-gray-50">
+            <div className="relative border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-deep-black-700 transition cursor-pointer bg-gray-50">
               <input
                 type="file"
                 id="resume"
@@ -203,7 +203,9 @@ const ResumeUpload = () => {
                 {fileName ? (
                   <div>
                     <p className="text-sm text-gray-500">Selected file:</p>
-                    <p className="font-medium text-caput-mortuum">{fileName}</p>
+                    <p className="font-medium text-deep-black-800">
+                      {fileName}
+                    </p>
                   </div>
                 ) : (
                   <>
@@ -230,7 +232,7 @@ const ResumeUpload = () => {
               className={`px-6 py-3 rounded-lg font-medium flex items-center ${
                 isLoading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-caput-mortuum hover:bg-caput-mortuum-700 text-white"
+                  : "bg-deep-black-800 hover:bg-deep-black-700 text-white"
               } transition shadow-md`}
             >
               {isLoading ? (

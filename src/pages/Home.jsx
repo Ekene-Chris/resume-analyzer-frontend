@@ -5,9 +5,10 @@ import {
   FaFileAlt,
   FaRocket,
   FaCheckCircle,
-  FaGlobeAfrica,
+  FaGlobe,
 } from "react-icons/fa";
 import ResumeUpload from "../components/ResumeUpload";
+// Import your logo - update with correct path
 import logo from "../assets/images/logo.svg";
 
 const Home = () => {
@@ -16,16 +17,16 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-linen">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-caput-mortuum to-caput-mortuum-900 text-white">
+      <div className="bg-gradient-to-r from-deep-black-800 to-deep-black-900 text-white">
         <div className="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 md:pr-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Resume Analysis Powered by Global DevOps Expertise
+              AI-Powered Resume Analysis for Engineers
             </h1>
             <p className="text-xl mb-8">
-              Get AI-powered feedback on your tech resume, aligned with the
-              Global DevOps Competency Matrix, and discover what it takes to
-              compete in the global tech marketplace.
+              Get expert feedback on your tech resume, tailored for software
+              engineers, and discover what it takes to stand out in today's
+              competitive tech marketplace.
             </p>
             <button
               onClick={() => setShowUploadForm(true)}
@@ -36,40 +37,40 @@ const Home = () => {
           </div>
           <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
             <div className="relative w-full max-w-md">
-              <div className="absolute -top-8 -left-8 w-full h-full bg-black rounded-lg"></div>
-              <div className="relative bg-linen p-8 rounded-lg border-2 border-caput-mortuum shadow-xl">
+              <div className="absolute -top-8 -left-8 w-full h-full bg-caput-mortuum rounded-lg"></div>
+              <div className="relative bg-linen p-8 rounded-lg border-2 border-deep-black shadow-xl">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-caput-mortuum rounded-full flex items-center justify-center text-white mr-4">
+                  <div className="w-12 h-12 bg-deep-black rounded-full flex items-center justify-center text-white mr-4">
                     <FaCheckCircle className="text-2xl" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-caput-mortuum">
+                    <h3 className="font-bold text-deep-black">
                       Industry-Aligned Analysis
                     </h3>
                     <p className="text-sm text-gray-600">
-                      Based on global standards
+                      Based on real tech industry standards
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-caput-mortuum rounded-full flex items-center justify-center text-white mr-4">
+                  <div className="w-12 h-12 bg-deep-black rounded-full flex items-center justify-center text-white mr-4">
                     <FaCheckCircle className="text-2xl" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-caput-mortuum">
+                    <h3 className="font-bold text-deep-black">
                       Keyword Optimization
                     </h3>
                     <p className="text-sm text-gray-600">
-                      Stand out to recruiters
+                      Stand out to recruiters and ATS systems
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-caput-mortuum rounded-full flex items-center justify-center text-white mr-4">
+                  <div className="w-12 h-12 bg-deep-black rounded-full flex items-center justify-center text-white mr-4">
                     <FaCheckCircle className="text-2xl" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-caput-mortuum">
+                    <h3 className="font-bold text-deep-black">
                       Targeted Feedback
                     </h3>
                     <p className="text-sm text-gray-600">
@@ -78,11 +79,11 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-caput-mortuum rounded-full flex items-center justify-center text-white mr-4">
+                  <div className="w-12 h-12 bg-deep-black rounded-full flex items-center justify-center text-white mr-4">
                     <FaCheckCircle className="text-2xl" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-caput-mortuum">
+                    <h3 className="font-bold text-deep-black">
                       Career Advancement
                     </h3>
                     <p className="text-sm text-gray-600">
@@ -105,7 +106,7 @@ const Home = () => {
           {/* How It Works Section */}
           <div className="py-16 bg-white">
             <div className="container mx-auto px-6">
-              <h2 className="text-3xl font-bold text-center mb-12 text-caput-mortuum">
+              <h2 className="text-3xl font-bold text-center mb-12 text-deep-black-800">
                 How It Works
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -114,7 +115,7 @@ const Home = () => {
                   <div className="text-caput-mortuum text-4xl mb-4 flex justify-center">
                     <FaCloudUploadAlt />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-caput-mortuum">
+                  <h3 className="text-xl font-bold mb-2 text-deep-black-800">
                     Upload Your Resume
                   </h3>
                   <p className="text-gray-700">
@@ -128,13 +129,13 @@ const Home = () => {
                   <div className="text-caput-mortuum text-4xl mb-4 flex justify-center">
                     <FaChartLine />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-caput-mortuum">
+                  <h3 className="text-xl font-bold mb-2 text-deep-black-800">
                     AI Analysis
                   </h3>
                   <p className="text-gray-700">
                     Our AI analyzes your resume against industry standards and
-                    role-specific requirements from the DevOps Competency
-                    Matrix.
+                    role-specific requirements for developers, engineers, and
+                    tech professionals.
                   </p>
                 </div>
 
@@ -143,12 +144,12 @@ const Home = () => {
                   <div className="text-caput-mortuum text-4xl mb-4 flex justify-center">
                     <FaFileAlt />
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-caput-mortuum">
+                  <h3 className="text-xl font-bold mb-2 text-deep-black-800">
                     Get Detailed Feedback
                   </h3>
                   <p className="text-gray-700">
                     Receive actionable insights to improve your resume and
-                    increase your chances of landing your dream role.
+                    increase your chances of landing your dream tech role.
                   </p>
                 </div>
               </div>
@@ -159,30 +160,29 @@ const Home = () => {
           <div className="py-16 bg-linen">
             <div className="container mx-auto px-6">
               <div className="max-w-3xl mx-auto text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4 text-caput-mortuum">
+                <h2 className="text-3xl font-bold mb-4 text-deep-black-800">
                   Why Use Our AI Resume Analyzer?
                 </h2>
                 <p className="text-xl text-gray-700">
-                  Get expert feedback powered by the Global DevOps Competency
-                  Matrix and designed to help you compete in the global tech
-                  marketplace.
+                  Get expert feedback powered by AI and designed to help you
+                  compete in the global tech marketplace.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
                   <div className="flex items-start">
-                    <div className="bg-caput-mortuum text-white p-3 rounded-lg mr-4">
-                      <FaGlobeAfrica className="text-xl" />
+                    <div className="bg-deep-black-800 text-white p-3 rounded-lg mr-4">
+                      <FaGlobe className="text-xl" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-caput-mortuum">
+                      <h3 className="text-xl font-bold mb-2 text-deep-black-800">
                         Industry Aligned Analysis
                       </h3>
                       <p className="text-gray-700">
-                        Our AI uses the Global DevOps Competency Matrix to
-                        evaluate your resume against industry standards and
-                        role-specific requirements.
+                        Our AI evaluates your resume against industry standards
+                        and role-specific requirements for frontend, backend,
+                        and full-stack engineers.
                       </p>
                     </div>
                   </div>
@@ -190,11 +190,11 @@ const Home = () => {
 
                 <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
                   <div className="flex items-start">
-                    <div className="bg-caput-mortuum text-white p-3 rounded-lg mr-4">
+                    <div className="bg-deep-black-800 text-white p-3 rounded-lg mr-4">
                       <FaRocket className="text-xl" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-caput-mortuum">
+                      <h3 className="text-xl font-bold mb-2 text-deep-black-800">
                         Tailored Recommendations
                       </h3>
                       <p className="text-gray-700">
@@ -207,16 +207,17 @@ const Home = () => {
 
                 <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
                   <div className="flex items-start">
-                    <div className="bg-caput-mortuum text-white p-3 rounded-lg mr-4">
+                    <div className="bg-deep-black-800 text-white p-3 rounded-lg mr-4">
                       <FaFileAlt className="text-xl" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-caput-mortuum">
+                      <h3 className="text-xl font-bold mb-2 text-deep-black-800">
                         Keyword Optimization
                       </h3>
                       <p className="text-gray-700">
                         Learn which essential keywords are missing from your
-                        resume and how to incorporate them effectively.
+                        resume and how to incorporate them effectively to get
+                        past ATS systems.
                       </p>
                     </div>
                   </div>
@@ -224,11 +225,11 @@ const Home = () => {
 
                 <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition">
                   <div className="flex items-start">
-                    <div className="bg-caput-mortuum text-white p-3 rounded-lg mr-4">
+                    <div className="bg-deep-black-800 text-white p-3 rounded-lg mr-4">
                       <FaChartLine className="text-xl" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 text-caput-mortuum">
+                      <h3 className="text-xl font-bold mb-2 text-deep-black-800">
                         Global Perspective
                       </h3>
                       <p className="text-gray-700">
@@ -243,7 +244,7 @@ const Home = () => {
               <div className="mt-12 text-center">
                 <button
                   onClick={() => setShowUploadForm(true)}
-                  className="bg-caput-mortuum hover:bg-caput-mortuum-800 text-white font-bold py-3 px-8 rounded-lg transition shadow-lg"
+                  className="bg-deep-black-800 hover:bg-deep-black-700 text-white font-bold py-3 px-8 rounded-lg transition shadow-lg"
                 >
                   Analyze Your Resume
                 </button>
@@ -251,74 +252,8 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Testimonials Section */}
-          <div className="py-16 bg-white">
-            <div className="container mx-auto px-6">
-              <h2 className="text-3xl font-bold text-center mb-12 text-caput-mortuum">
-                Success Stories
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-linen p-6 rounded-lg shadow-md">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-caput-mortuum rounded-full flex items-center justify-center text-white font-bold text-xl">
-                      DB
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="font-bold">David B.</h3>
-                      <p className="text-sm text-gray-600">
-                        Senior DevOps Engineer
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 italic">
-                    "The resume analysis highlighted gaps in how I was
-                    presenting my cloud expertise. After implementing the
-                    suggestions, I received 3 interview requests within a week!"
-                  </p>
-                </div>
-
-                <div className="bg-linen p-6 rounded-lg shadow-md">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-caput-mortuum rounded-full flex items-center justify-center text-white font-bold text-xl">
-                      SA
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="font-bold">Sarah A.</h3>
-                      <p className="text-sm text-gray-600">
-                        Cloud Infrastructure Specialist
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 italic">
-                    "The keyword analysis was eye-opening. I was missing
-                    critical terms that recruiters look for. My improved resume
-                    is now getting much more attention on LinkedIn."
-                  </p>
-                </div>
-
-                <div className="bg-linen p-6 rounded-lg shadow-md">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-caput-mortuum rounded-full flex items-center justify-center text-white font-bold text-xl">
-                      JM
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="font-bold">John M.</h3>
-                      <p className="text-sm text-gray-600">Backend Developer</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 italic">
-                    "As a developer transitioning to DevOps, this tool helped me
-                    identify which of my skills to emphasize and what gaps to
-                    fill. The structured feedback was invaluable."
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* CTA Section */}
-          <div className="py-12 bg-gradient-to-r from-caput-mortuum to-caput-mortuum-900 text-white">
+          <div className="py-12 bg-gradient-to-r from-deep-black-800 to-deep-black-900 text-white">
             <div className="container mx-auto px-6 text-center">
               <h2 className="text-3xl font-bold mb-4">
                 Ready to enhance your tech resume?
@@ -346,22 +281,22 @@ const Home = () => {
               <img src={logo} alt="Ekene Chris Logo" className="w-48" />
             </div>
             <div className="md:w-2/3">
-              <h2 className="text-3xl font-bold mb-4 text-caput-mortuum">
+              <h2 className="text-3xl font-bold mb-4 text-deep-black-800">
                 About Ekene Chris
               </h2>
               <p className="text-lg text-gray-700 mb-4">
-                Ekene Chris is a DevOps Architect, Mentor, and Tech Educator
+                Ekene Chris is a Technology Architect, Mentor, and Tech Educator
                 dedicated to empowering tech professionals through innovation
                 and real-world expertise. As the Co-Founder & CEO of Teleios, he
                 is shaping AI-powered learning for aspiring and mid-level
-                engineers.
+                engineers across all disciplines.
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 With a track record spanning Andela, Kuda, and Tek Experts, he
-                specializes in cloud infrastructure, CI/CD automation, and
-                Kubernetes. Passionate about mentorship and strategic
-                problem-solving, Ekene is committed to building resilient,
-                scalable tech solutions that drive efficiency and
+                specializes in architecture design, system optimization, and
+                software engineering best practices. Passionate about mentorship
+                and strategic problem-solving, Ekene is committed to building
+                resilient, scalable tech solutions that drive efficiency and
                 transformation.
               </p>
               <div className="flex space-x-4">
@@ -369,7 +304,7 @@ const Home = () => {
                   href="https://ekenechris.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-caput-mortuum hover:bg-caput-mortuum-800 text-white px-4 py-2 rounded-lg"
+                  className="bg-deep-black-800 hover:bg-deep-black-700 text-white px-4 py-2 rounded-lg"
                 >
                   Visit Website
                 </a>
@@ -377,7 +312,7 @@ const Home = () => {
                   href="https://jointeleios.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg"
+                  className="bg-caput-mortuum hover:bg-caput-mortuum-700 text-white px-4 py-2 rounded-lg"
                 >
                   Learn About Teleios
                 </a>

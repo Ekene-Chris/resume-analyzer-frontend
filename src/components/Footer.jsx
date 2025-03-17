@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-deep-black text-white">
+    <footer className="bg-deep-black-900 text-white">
       <div className="container mx-auto px-6">
         {/* Main Footer Content */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -21,8 +21,8 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-400 mb-4">
-              DevOps Architect & Technical Educator empowering African engineers
-              to compete globally.
+              Technology Architect & Educator empowering engineers to excel in
+              the global tech landscape.
             </p>
             <div className="flex space-x-4">
               <a
@@ -111,12 +111,12 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://ekenechris.com/devops-matrix"
+                  href="https://ekenechris.com/engineering-excellence"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition"
                 >
-                  DevOps Competency Matrix
+                  Engineering Excellence
                 </a>
               </li>
               <li>

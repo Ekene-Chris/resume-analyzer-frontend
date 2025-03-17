@@ -8,15 +8,15 @@
   }
 
   .btn-primary {
-    @apply bg-caput-mortuum text-white hover:bg-caput-mortuum-700;
+    @apply bg-deep-black-800 text-white hover:bg-deep-black-700;
   }
 
   .btn-secondary {
-    @apply bg-gray-500 text-white hover:bg-gray-600;
+    @apply bg-caput-mortuum text-white hover:bg-caput-mortuum-700;
   }
 
   .form-input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-caput-mortuum;
+    @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-deep-black-700;
   }
 
   .form-label {
@@ -24,7 +24,7 @@
   }
 
   .form-select {
-    @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-caput-mortuum;
+    @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-deep-black-700;
   }
 
   .form-error {
