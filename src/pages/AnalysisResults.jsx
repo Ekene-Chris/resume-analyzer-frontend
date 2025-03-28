@@ -1,6 +1,8 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
+import { useEffect } from "react";
 import { cvService } from "../services/apiService";
+import { logEvent } from "../utils/analytics";
 import {
   FaSpinner,
   FaExclamationTriangle,
@@ -14,6 +16,7 @@ import {
 
 const AnalysisResults = () => {
   const { analysisId } = useParams();
+  const navigate = useNavigate();
 
   const {
     data: analysis,
@@ -22,6 +25,45 @@ const AnalysisResults = () => {
   } = useQuery(["analysisResults", analysisId], () =>
     cvService.getAnalysisResults(analysisId)
   );
+
+  // Track when results are successfully viewed
+  useEffect(() => {
+    if (analysis && !isLoading && !error) {
+      // Track successful results view
+      logEvent(
+        "Analysis",
+        "ResultsViewed",
+        `Score: ${analysis.overall_score}`,
+        analysis.overall_score
+      );
+
+      // Track result quality (based on score ranges)
+      let resultQuality = "Poor";
+      if (analysis.overall_score >= 80) {
+        resultQuality = "Excellent";
+      } else if (analysis.overall_score >= 60) {
+        resultQuality = "Good";
+      }
+
+      logEvent("Analysis", "ResultQuality", resultQuality);
+    }
+  }, [analysis, isLoading, error]);
+
+  // Handle PDF download tracking
+  const handlePdfDownload = () => {
+    logEvent("Analysis", "PdfDownload", `AnalysisID: ${analysisId}`);
+  };
+
+  // Track errors
+  useEffect(() => {
+    if (error) {
+      logEvent(
+        "Analysis",
+        "ResultsError",
+        `Error: ${error.message || "Unknown error"}`
+      );
+    }
+  }, [error]);
 
   if (isLoading) {
     return (
@@ -56,6 +98,7 @@ const AnalysisResults = () => {
         <Link
           to="/"
           className="bg-deep-black-800 hover:bg-deep-black-700 text-white font-bold py-3 px-8 rounded-lg inline-block text-lg"
+          onClick={() => logEvent("Analysis", "ReturnHomeFromError")}
         >
           Return Home
         </Link>
@@ -65,6 +108,16 @@ const AnalysisResults = () => {
 
   // Generate PDF download URL
   const pdfUrl = cvService.getAnalysisPdf(analysisId);
+
+  // Track category interactions
+  const trackCategoryClick = (categoryName) => {
+    logEvent("Analysis", "CategoryExpanded", categoryName);
+  };
+
+  // Track when users click on keyword items
+  const trackKeywordClick = (keywordType, keyword) => {
+    logEvent("Analysis", "KeywordClicked", `${keywordType}: ${keyword}`);
+  };
 
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
@@ -77,6 +130,7 @@ const AnalysisResults = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center bg-white text-deep-black-800 px-4 py-2 rounded-lg hover:bg-gray-100 transition"
+            onClick={handlePdfDownload}
           >
             <FaDownload className="mr-2" /> Download PDF
           </a>
@@ -165,6 +219,7 @@ const AnalysisResults = () => {
             <div
               key={index}
               className="border rounded-lg overflow-hidden shadow-sm"
+              onClick={() => trackCategoryClick(category.name)}
             >
               <div
                 className={`p-4 flex justify-between items-center
@@ -229,7 +284,8 @@ const AnalysisResults = () => {
                 {analysis.keyword_analysis.present.map((keyword, idx) => (
                   <span
                     key={idx}
-                    className="bg-green-100 text-green-800 px-3 py-1 rounded text-sm"
+                    className="bg-green-100 text-green-800 px-3 py-1 rounded text-sm cursor-pointer hover:bg-green-200"
+                    onClick={() => trackKeywordClick("Present", keyword)}
                   >
                     {keyword}
                   </span>
@@ -249,7 +305,8 @@ const AnalysisResults = () => {
                 {analysis.keyword_analysis.missing.map((keyword, idx) => (
                   <span
                     key={idx}
-                    className="bg-red-100 text-red-800 px-3 py-1 rounded text-sm"
+                    className="bg-red-100 text-red-800 px-3 py-1 rounded text-sm cursor-pointer hover:bg-red-200"
+                    onClick={() => trackKeywordClick("Missing", keyword)}
                   >
                     {keyword}
                   </span>
@@ -271,7 +328,8 @@ const AnalysisResults = () => {
                 {analysis.keyword_analysis.recommended.map((keyword, idx) => (
                   <span
                     key={idx}
-                    className="bg-gray-100 text-deep-black-800 px-3 py-1 rounded text-sm"
+                    className="bg-gray-100 text-deep-black-800 px-3 py-1 rounded text-sm cursor-pointer hover:bg-gray-200"
+                    onClick={() => trackKeywordClick("Recommended", keyword)}
                   >
                     {keyword}
                   </span>
@@ -366,6 +424,7 @@ const AnalysisResults = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-deep-black-800 px-6 py-3 rounded-lg hover:bg-gray-100 transition font-bold text-center"
+              onClick={() => logEvent("ExternalLink", "TeleiosPromoClick")}
             >
               Learn More About Teleios
             </a>
@@ -376,6 +435,7 @@ const AnalysisResults = () => {
           <Link
             to="/"
             className="bg-caput-mortuum hover:bg-caput-mortuum-700 text-white font-bold py-3 px-8 rounded-lg text-center text-lg"
+            onClick={() => logEvent("Analysis", "AnalyzeAnotherResume")}
           >
             Analyze Another Resume
           </Link>
@@ -384,6 +444,7 @@ const AnalysisResults = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="bg-deep-black-800 hover:bg-deep-black-700 text-white font-bold py-3 px-8 rounded-lg text-center text-lg"
+            onClick={handlePdfDownload}
           >
             <FaDownload className="mr-2 inline-block" /> Download PDF Report
           </a>

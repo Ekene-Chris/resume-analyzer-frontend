@@ -6,6 +6,7 @@ import {
   FaExclamationCircle,
 } from "react-icons/fa";
 import { cvService } from "../services/apiService";
+import { logEvent } from "../utils/analytics"; // Import analytics
 
 const ResumeUpload = () => {
   const navigate = useNavigate();
@@ -36,6 +37,9 @@ const ResumeUpload = () => {
     if (selectedFile) {
       setFile(selectedFile);
       setFileName(selectedFile.name);
+
+      // Track file selection event
+      logEvent("Resume", "FileSelected", `FileType: ${selectedFile.type}`);
     }
   };
 
@@ -61,6 +65,13 @@ const ResumeUpload = () => {
     setIsLoading(true);
 
     try {
+      // Track form submission attempt
+      logEvent(
+        "Resume",
+        "SubmissionAttempt",
+        `Role: ${targetRole}, Level: ${experienceLevel}`
+      );
+
       // Create form data
       const formData = new FormData();
       formData.append("name", name);
@@ -72,12 +83,40 @@ const ResumeUpload = () => {
       // Upload the resume and get analysis ID
       const response = await cvService.uploadResume(formData);
 
+      // Track successful submission
+      logEvent(
+        "Resume",
+        "SubmissionSuccess",
+        `AnalysisID: ${response.analysis_id}`
+      );
+
       // Redirect to the status page
       navigate(`/analysis/${response.analysis_id}/status`);
     } catch (err) {
+      // Track submission error
+      logEvent(
+        "Resume",
+        "SubmissionError",
+        `Error: ${err.response?.data?.detail || err.message}`
+      );
+
       setError(`Upload failed: ${err.response?.data?.detail || err.message}`);
       setIsLoading(false);
     }
+  };
+
+  // Track role selection changes
+  const handleRoleChange = (e) => {
+    const newRole = e.target.value;
+    setTargetRole(newRole);
+    logEvent("Resume", "RoleSelected", newRole);
+  };
+
+  // Track experience level changes
+  const handleExperienceLevelChange = (e) => {
+    const newLevel = e.target.value;
+    setExperienceLevel(newLevel);
+    logEvent("Resume", "ExperienceLevelSelected", newLevel);
   };
 
   return (
@@ -147,7 +186,7 @@ const ResumeUpload = () => {
               <select
                 id="targetRole"
                 value={targetRole}
-                onChange={(e) => setTargetRole(e.target.value)}
+                onChange={handleRoleChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-gray-300 focus:border-deep-black-700 transition appearance-none bg-white"
               >
                 {roles.map((role) => (
@@ -168,7 +207,7 @@ const ResumeUpload = () => {
               <select
                 id="experienceLevel"
                 value={experienceLevel}
-                onChange={(e) => setExperienceLevel(e.target.value)}
+                onChange={handleExperienceLevelChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-gray-300 focus:border-deep-black-700 transition appearance-none bg-white"
               >
                 {experienceLevels.map((level) => (
@@ -234,6 +273,11 @@ const ResumeUpload = () => {
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-deep-black-800 hover:bg-deep-black-700 text-white"
               } transition shadow-md`}
+              onClick={() => {
+                if (!isLoading) {
+                  logEvent("Resume", "SubmitButtonClicked");
+                }
+              }}
             >
               {isLoading ? (
                 <>
